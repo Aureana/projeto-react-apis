@@ -2,9 +2,10 @@ import React from "react"
 import PokemonCard from "../components/card/PokemonCard"
 import Header from "../components/Header"
 import styled from 'styled-components'
+import Modal from 'react-modal'
 
- import { useContext } from "react"
- import { GlobalContext } from "../contexts/GlobalContext"
+import { useContext } from "react"
+import { GlobalContext } from "../contexts/GlobalContext"
 
 const HomePageStyled = styled.div`
 
@@ -37,75 +38,65 @@ h1{
   height: 90px;
   margin-bottom:25px;
 }
-
 `
+const DivMOdal = styled.div`
+width: 451px;
+height: 222px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+h1{
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 72px;
+}
+p{
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+}
+`
+
+
 const HomePage = () => {
 
-    const context = useContext(GlobalContext)
+  const context = useContext(GlobalContext)
 
-    const  {pokelist, addToPokedex,pokedex} = context
-    //console.log(pokelist)
-  
-    // não mostrar pokemons que estão na pokedex
-    // const filteredPokelist = () =>
-    //   pokelist.filter(
-    //     (pokemonInList) =>
-    //       !pokedex.find(
-    //         (pokemonInPokedex) => pokemonInList.name === pokemonInPokedex.name
-    //       )
-    //   );
-    // console.log(pokelist)
+  const { pokelist, modal, modalCapturarSumir, customStyle } = context
 
-    return (
-        <>
-            <Header isHomePage={true} />
+  return (
+    <>
+      <Header isHomePage={true} />
 
-            <HomePageStyled>
-                <div className="divTitulo"><h1>Todos os Pokemons</h1></div>
-                <div className="containerCard">
-                {pokelist && pokelist.map((item) => {
-              return (<div key={item.name}>                
-                <PokemonCard pokemon={item} pokemonUrlCada={item.url}/>
-                
-              </div>)
-            })
-            }
+      <HomePageStyled>
+        <div className="divTitulo"><h1>Todos os Pokemons</h1></div>
+        <div className="containerCard">
+          {pokelist && pokelist.map((item) => {
+            return (<div key={item.name}>
+              <PokemonCard pokemon={item} pokemonUrlCada={item.url} isHomePage={true} />
 
-                </div>
+            </div>)
+          })
+          }
+        </div>
+      </HomePageStyled>
+      <Modal
+        onRequestClose={modalCapturarSumir}
+        style={customStyle}
+        isOpen={modal}>
+        <DivMOdal>
+          <h1>Gotcha!</h1>
+          <p>O pokemon foi adicionado a sua pokedex</p>
+        </DivMOdal>
 
+      </Modal>
+    </>
 
-
-                {/* {pokelist.map((pokemon)=>{
-                     console.log("outro", pokemon)
-                    return(
-                        <PokemonCard
-                        key = {pokemon.id}
-                        pokemon ={pokemon}                       
-                       >                       
-
-                       </PokemonCard>
-                    )                  
-                }
-                )} */}
-                
-                {/* {filteredPokelist().map((pokemon) => (
-                    <PokemonCard
-                    key={pokemon.url}
-                    pokemonUrl={pokemon.url}
-                    addToPokedex={addToPokedex}
-                    />
-                ))} */}
-
-                
-                {/* <div className="divCard">
-                    <PokemonCard /> */}
-                    {/* <PokemonCard />
-                    <PokemonCard />
-                    <PokemonCard /> */}
-                {/* </div> */}
-            </HomePageStyled>
-
-        </>
-    )
+  )
 }
 export default HomePage
