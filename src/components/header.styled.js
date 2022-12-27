@@ -9,10 +9,13 @@ padding: 4px 10px;
 position: absolute;
 width: 287px;
 height: 74px;
-margin-right:41px;
+margin-right:10px;
 top: 41px;
 background: #33A4F5;
 border-radius: 8px;
+color: white;
+font-weight:bold;
+font-size: 24px;
 `
 export const ButtonTodosPokemonsDetalhes = styled.button`
 display: flex;
@@ -54,7 +57,7 @@ width: 287px;
 height: 74px;
 margin-right:41px;
 top: 41px;
-background: red;
+background: #FF6262;;
 border-radius: 8px;
 color: white;
 font-size: 16px;

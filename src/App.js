@@ -13,9 +13,7 @@ const App = () => {
     const [pokedex, setPokedex] = useState([]);
     const [typePoke, setTypePoke] = useState([])
     const [modal, setModal] = useState(false)
-    const [modal1, setModal1] = useState(false)
-
-    
+        
 
     const fetchPokelist = () => {
 

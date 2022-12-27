@@ -17,23 +17,29 @@ margin-bottom:40px;
 position: absolute;
 width: 193px;
 height: 193px;
-right:12px;
+left: 210px;
 top: -52px;
-z-index:0;
+
 }
-.bolaPoke{
-position: absolute;
+.bolaPokeCard{
 width: 250.73px;
 height: 210.73px;
 right: 0;
-top: 0;
+bottom:192px;
+z-index: 0;
+
+
 }
 .ladoEsquerdo{
     display: flex;
     flex-direction:column;
-    margin-left:24px;
+    left:40px;
     margin-top:24px;
     margin-bottom:20px;
+    max-width: 200px;
+    min-width:200px;
+    position: relative;
+
     p{
         font-size:16px;
         color:white; 
@@ -55,22 +61,36 @@ h3{
     text-decoration:underline;
     color: white;
     font-weight:700;
-
 }
 .ladoDireito{  
+    z-index: 0;
+    min-width:220px;
+    max-width: 220px;
+
+
     .botaoCapturar{
-    margin-top:158px;
-    margin-bottom:13px; 
-    margin-right:22px;  
     background-color: white;
-    color:  black;
+    color: black;
+    z-index: 1;
+    position: relative;
+    bottom: 50px;
+    padding: 4px 10px;
+    left: 80px;
+    width: 106px;
+    height: 38px;
+
     } 
     .botaoExcluir{
-    margin-top:158px;
-    margin-bottom:13px; 
-    margin-right:22px;  
+    z-index: 1;
+    position: relative;
+    bottom: 50px;
+    left: 80px; 
+    padding: 4px 10px; 
+    width: 106px;
+    height: 38px;
     background-color: #FF6262;
     color:  #FFFFFF;
+   
 
     }
    

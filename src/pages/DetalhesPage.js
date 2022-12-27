@@ -23,13 +23,10 @@ const DetalhesPage = () => {
     setDetails(data)
     setPoder2(data['types']['0']['type']['name'])
     setPoder(data['types']['1']['type']['name'])
-
   }
-
   const BaseState = async () => {
     setBase(details['stats'])
   }
-
   useEffect(() => {
     BaseState()
   }, [fetchDetalhes])
@@ -48,11 +45,12 @@ const DetalhesPage = () => {
       <Header isDetalhes={true} isPokedex={true} details={details} />
 
       <MainStyled>
+        <div className='tituloDetalhe'>
+          <h1>Detalhes</h1>
+        </div>
         {
           details && <DetalhesCard details={details} poder={poder} poder2={poder2} base={base} /> //enviando este objeto p detais card
-
         }
-
         <Modal
           onRequestClose={modalCapturarSumir}
           style={customStyle}
@@ -61,12 +59,8 @@ const DetalhesPage = () => {
             <h1>Oh, no! </h1>
             <p>O pokemon foi removido da sua pokedex</p>
           </DivMOdal3>
-
         </Modal>
-
-
       </MainStyled>
-
 
     </>
   )
