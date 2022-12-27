@@ -63,7 +63,7 @@ color: white;
 font-size: 16px;
 `
 
-export const HeaderStyled = styled.div`
+export const EstiloHeader = styled.div`
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;
 height: 160px;

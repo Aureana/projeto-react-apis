@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ButtonPokedex, ButtonTodosPokemonsDetalhes, ButtonExcluir, ButtonRedesSociais, HeaderStyled } from "./Header.styled"
+import { ButtonPokedex, ButtonTodosPokemonsDetalhes, ButtonExcluir, ButtonRedesSociais, EstiloHeader } from "./Header.styled"
 import { goToHomePage, goToPokedexPage } from "../routes/coordinators"
 import imgPokemonHeader from "../imagens/img-pokemon-header.png"
 import github2 from "../imagens/github2.png"
@@ -26,7 +26,7 @@ const Header = (props) => {
   const { pokedex, setPokedex, modalCapturarAparecer } = context
 
   return (
-    <HeaderStyled>
+    <EstiloHeader>
       <div className="GridHeader1">
      {isHomePage && <ButtonRedesSociais>
         <a href="https://github.com/Aureana"> <img class="icone-git" src={github2} /></a>
@@ -48,7 +48,7 @@ const Header = (props) => {
         }}>Excluir da Pokédex</ButtonExcluir>}
       </div>
 
-    </HeaderStyled>
+    </EstiloHeader>
   )
 }
 export default Header
