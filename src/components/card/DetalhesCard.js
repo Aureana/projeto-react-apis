@@ -25,12 +25,12 @@ export const DetalhesCard = (props) => {
         <div className='baseState'>
           <div className='base'>
             <h1>Base Stats</h1>
-            <Stack spacing={"none"} paddingLeft={"110px"}>
+            <Stack marginTop={"-17px"} spacing={"-5px"} paddingLeft={"110px"}>
               < div className='bordaBase'><p className='progressBase'>HP<span className='spanBase1'>{base.length > 1 && base["0"]["base_stat"]}</span></p>
                 <Progress borderRadius="10px" colorScheme='orange' size='md' value={base.length > 1 && base["0"]['base_stat']} /></div>
               <p className='progressBase'>Attack<span className='spanBase2'>{base.length > 1 && base["1"]["base_stat"]}</span></p>
               <Progress borderRadius="10px" colorScheme='orange' size='md' value={base.length > 1 && base["1"]['base_stat']} />
-              <p className='progressBase'>Defenser<span className='spanBase3'>{base.length > 1 && base["2"]["base_stat"]}</span></p>
+              <p className='progressBase'>Defense<span className='spanBase3'>{base.length > 1 && base["2"]["base_stat"]}</span></p>
               <Progress borderRadius="10px" colorScheme='orange' size='md' value={base.length > 1 && base["2"]['base_stat']} />
               <p className='progressBase'>Sp. Atk<span className='spanBase4'>{base.length > 1 && base["3"]["base_stat"]}</span></p>
               <Progress borderRadius="10px" colorScheme='yellow' size='md' value={base.length > 1 && base["3"]['base_stat']} />
@@ -75,10 +75,12 @@ export const DetalhesCard = (props) => {
 
         </div>
         <div className='imgDireito'>
-          <img className='imgPokens' src={details.sprites?.other["official-artwork"].front_default} />
+          <img className='imgPokens' src={details.sprites?.other["official-artwork"].front_default} />         
         </div>
-
+        
         <img className='bolaPoke' src={imagemBola} />
+
+        
       </DetalhesLadoDireito>
 
     </ContainerCard>

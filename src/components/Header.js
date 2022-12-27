@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { ButtonPokedex, ButtonTodosPokemonsDetalhes, ButtonExcluir, ButtonRedesSociais, HeaderStyled } from "./Header.styled"
 import { goToHomePage, goToPokedexPage } from "../routes/coordinators"
@@ -31,11 +30,11 @@ const Header = (props) => {
       <div className="GridHeader1">
      {isHomePage && <ButtonRedesSociais>
         <a href="https://github.com/Aureana"> <img class="icone-git" src={github2} /></a>
-        <a href="https://www.linkedin.com/in/aureana-santos-a7091b21b"> <img class="icone-git" src={linkedin} /></a>
+        <a href="https://www.linkedin.com/in/aureana-santos-a7091b21b"> <img class="icone-git" src={linkedin} alt='iconeGit' /></a>
       </ButtonRedesSociais>}    
       <div>{isPokedex && <ButtonTodosPokemonsDetalhes onClick={homePage}>Todos os Pokemons</ButtonTodosPokemonsDetalhes>}</div>
       </div>
-      <div className="GridHeader2"> <img className='imgPokemonHeader' src={imgPokemonHeader} /></div>
+      <div className="GridHeader2"> <img className='imgPokemonHeader' src={imgPokemonHeader} alt='iconeGit'/></div>
       <div className="GridHeader3">
         {isHomePage && <ButtonPokedex onClick={irParaPokedex}>Pokedéx</ButtonPokedex>}
         {isDetalhes && <ButtonExcluir onClick={() => {

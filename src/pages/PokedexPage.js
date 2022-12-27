@@ -6,6 +6,7 @@ import Modal from 'react-modal'
 
 import { useContext } from "react";
 import { GlobalContext } from "../contexts/GlobalContext";
+import { Button } from "@chakra-ui/react";
 
 
 const PokedexPageStyled = styled.div`
@@ -41,6 +42,22 @@ h1{
      gap:20px; 
      justify-content: center;
 }
+.divTitulopokedex{
+  display:flex ;
+  align-items: center;
+  justify-content: space-between;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 44px;
+  height: 120px;
+  width:100%;
+  color: white;
+}
+.botaoExcluirTodos{
+    color:red;
+    margin-bottom: 30px;;
+    
+}
 `
 const DivMOdal2 = styled.div`
 width: 451px;
@@ -69,14 +86,24 @@ const PokedexPage = () => {
 
     const context = useContext(GlobalContext)
 
-    const { pokedex, removePokedex, modal, modalCapturarSumir, customStyle } = context
+    const { pokedex, setPokedex, removePokedex, modal, modalCapturarSumir, customStyle } = context
+
+    function excluirTodos(){
+        const podekexVazio = []
+        setPokedex (podekexVazio)
+        const pokedexString = JSON.stringify(podekexVazio) //para zerar o local store
+        window.localStorage.setItem("pokeBrowser", pokedexString)
+    }
 
     return (
         <>
             <Header isPokedex={true} />
 
             <PokedexPageStyled>
-                <h1>Meus Pokemons</h1>
+                <div className="divTitulopokedex">
+                    <h1>Meus Pokemons</h1>
+                    <Button className="botaoExcluirTodos" onClick={()=>excluirTodos()}> Excluir Todos</Button>
+                </div>
                 <div className="pokedexContainerCard">
 
                     {pokedex.map((pokemon) => {
@@ -91,7 +118,7 @@ const PokedexPage = () => {
                     })}
 
                 </div>
-                
+
                 <Modal
                     onRequestClose={modalCapturarSumir}
                     style={customStyle}
@@ -102,7 +129,7 @@ const PokedexPage = () => {
                     </DivMOdal2>
 
                 </Modal>
-                
+
 
 
             </PokedexPageStyled>

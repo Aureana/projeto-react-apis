@@ -1,20 +1,15 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useEffect, useContext, useState} from 'react'
 import { GlobalContext } from '../../contexts/GlobalContext'
 import imagemBola from "../../imagens/pokeBola.png"
 import { Button } from '@chakra-ui/react'
-import { useNavigate, useLocation, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { getTypes } from '../../util/ReturnType'
 import {PokemonCardConteiner} from "./StyledPokemonCard"
 import {getColors} from "../../util/ReturnCor"
 
 
-
 const PokemonCard = (props, {showLink = true}) => {
     const { pokemon} = props;
-
-    const location = useLocation();//path atual
-
-    const navigate = useNavigate()
 
     const context = useContext(GlobalContext)
     
@@ -55,7 +50,7 @@ const PokemonCard = (props, {showLink = true}) => {
 
             <div className='ladoDireito'>
                 <img className='imgBulba' src={pokemon.sprites?.other["official-artwork"].front_default} />
-                <img className='bolaPoke' src={imagemBola} />
+                <img className='bolaPokeCard' src={imagemBola} />
               
                 {props.isHomePage && <Button className='botaoCapturar' onClick={() => capturarModal()}>Capturar</Button>}
                 {props.isPokedex && <Button className='botaoExcluir' onClick={() => excluirModal()}>Excluir</Button> }

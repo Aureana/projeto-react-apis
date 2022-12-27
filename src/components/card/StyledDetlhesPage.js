@@ -2,20 +2,31 @@ import styled from "styled-components"
 
 export const MainStyled = styled.main`
 width: 100%;
-height: 90vh;
+height: 110vh;
 padding:0 26px;
 background-color:#5D5D5D;
-padding: 60px 110px;
+padding: 0 110px;
+
+.tituloDetalhe{ 
+  display:flex ;
+  align-items: center;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 44px;
+  height: 120px;
+  width:100%;
+  color: white;
+}
 `
 export const ContainerCard = styled.main`
 display: flex;
 background-color: ${(props)=>props.color};
-width:  100% ;
-height: 100%;
+width: 100% ;
 max-height: 663px;
-min-height: 663px;
+min-height: 500px;
 padding: 12px;
 border-radius: 34px;
+z-index: 0;
 `
 export const DetalhesLadoEsquerdo = styled.div`
     display: flex;
@@ -56,10 +67,10 @@ export const DetalhesLadoEsquerdo = styled.div`
         background-color: white;
         border-radius: 10px;
     }
-    .baseState{       
-        height: 100%;
-        width: 70%;
-        padding:10px 20px;
+    .baseState{ 
+        min-width:60%;              
+        min-height:100%;        
+        padding:10px 10px;
         
     }
     .base{
@@ -73,23 +84,24 @@ export const DetalhesLadoEsquerdo = styled.div`
         font-size: 30px;
         font-weight: bold;
         border-bottom: 1px solid #ECECEC;
-        width: 103%;       
+        width: 103%; 
+        margin-bottom:5px;      
     }
     .divBaseStatTotal{
         display: flex;
         gap:5px;
         position: relative;
-        right: 100px;
+        right: 110px;
         top:15px;
         border-bottom: 1px solid #ECECEC;
         width: 170%; 
     }
     .progressBase{
         position: relative;
-        right: 100px;
-        top:20px;
+        right: 110px;
         border-bottom: 1px solid #ECECEC;
         width: 170%;
+        top:17px;
         }
     .spanBase1{
         font-weight: bold;
@@ -102,7 +114,7 @@ export const DetalhesLadoEsquerdo = styled.div`
     }
     .spanBase3{
         font-weight: bold;
-        margin-left:10px;
+        margin-left:15px;
     }
     .spanBase4{
         font-weight: bold;
@@ -133,7 +145,7 @@ export const DetalhesLadoDireito = styled.div`
     }
     .imgDireito{
         width: 50%;
-        height: 100%;            
+        height: 100%;         
     }
     .imgPokens{
         width: 200px;
@@ -141,12 +153,12 @@ export const DetalhesLadoDireito = styled.div`
         position: relative;
         bottom: 100px;
         left: 15px;
+        z-index:0;
     }
     .tiposDireito{
         display: flex;
         gap: 10px;
-        margin-bottom: 20px; 
-        
+        margin-bottom: 20px;         
     }
     
     h2{
@@ -157,19 +169,20 @@ export const DetalhesLadoDireito = styled.div`
     p{
         font-size: 16px;
         font-weight:700;
-        color:#FFF; 
-        
+        color:#FFF;         
     }
     .divMoves{
         width: 100%;
         height: 372px;
         background-color: white;
         border-radius:10px; 
-        padding: 15px;        
+        padding: 15px;  
+        position: relative;
+        z-index: 0;
     }
     .move{
         display: flex;
-        flex-direction: column;        
+        flex-direction: column;
     }
     span{
         font-family: 'Montserrat';
@@ -190,16 +203,15 @@ export const DetalhesLadoDireito = styled.div`
         font-weight: 800;
         font-size: 24px;
         line-height: 29px;
-        padding-bottom:20px
-       
+        padding-bottom:20px       
     }
     .bolaPoke{
         position: absolute;
         max-width: 638px;
         max-height: 470px;       
         min-width: 638px;
-        min-height: 470px;       
-        top:220px;
+        min-height: 539px;       
+        top:280px;
         right: 112px;
         z-index: 0;
     }

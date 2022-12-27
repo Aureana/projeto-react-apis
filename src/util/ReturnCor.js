@@ -19,5 +19,5 @@ export const getColors = (type) => {
       case "water":
         return "#71C3FF";
       default:
-        return "black";
+        return "#5D5D5D";
     }}
