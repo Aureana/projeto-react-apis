@@ -2,15 +2,14 @@ import React, { useEffect, useContext, useState } from 'react'
 import { GlobalContext } from '../../contexts/GlobalContext'
 import imagemBola from "../../imagens/pokeBola.png"
 import { Button } from '@chakra-ui/react'
-import { gotoDetalhesPage } from "../../routes/coordinators"
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { getTypes } from '../../util/ReturnType'
-import {BASE_URL} from "../../constants/url"
-import {PokemonCardConteiner} from "./styled"
+import {PokemonCardConteiner} from "./StyledPokemonCard"
 import {getColors} from "../../util/ReturnCor"
 
 
-const PokemonCard = (props) => {
+
+const PokemonCard = (props, {showLink = true}) => {
     const { pokemon} = props;
 
     const location = useLocation();//path atual
@@ -18,28 +17,38 @@ const PokemonCard = (props) => {
     const navigate = useNavigate()
 
     const context = useContext(GlobalContext)
-
     
     const [poder, setPoder] = useState([])
     const [poder2, setPoder2] = useState([])
-    const [cadaPokemon, setCadaPokemon] = useState([])
+    const [pokeDetalhes, setPokeDetalhes] = useState([])   
 
-    const { addToPokedex, removeFromPokedex, pokelist} = context   
+    const { addToPokedex, removeFromPokedex, modalCapturarAparecer} = context   
       
     //segunda requisção para buscar os tipos
     const fetchPokemon2 = async () => {
-
-        const APIResponse = await fetch(BASE_URL)
-        const data = await APIResponse.json()
         setPoder2(pokemon['types']['0']['type']['name'])
-        setPoder(pokemon['types']['1']['type']['name'])
-        setCadaPokemon(data)
+        setPoder(pokemon['types']['1']['type']['name'])         
+    }
+    const pokemonNameFetch = async () => {
+        setPokeDetalhes(pokemon)
     }
 
     useEffect(()=>{
         fetchPokemon2()
      },[])
 
+     useEffect(()=>{
+        pokemonNameFetch()
+     },[fetchPokemon2])
+
+      function capturarModal(){
+        modalCapturarAparecer()
+        addToPokedex(pokemon)
+      }
+      function excluirModal(){
+        modalCapturarAparecer()
+        removeFromPokedex(pokemon)
+      }
   
     return (
         <PokemonCardConteiner color = {getColors(poder2)} >
@@ -47,20 +56,20 @@ const PokemonCard = (props) => {
             <div className='ladoDireito'>
                 <img className='imgBulba' src={pokemon.sprites?.other["official-artwork"].front_default} />
                 <img className='bolaPoke' src={imagemBola} />
-                {location.pathname === "/" ? 
-                <Button onClick={() => addToPokedex(pokemon)}>Capturar</Button>
-                 :<Button onClick={() => removeFromPokedex(pokemon)}>Excluir</Button>} 
+              
+                {props.isHomePage && <Button className='botaoCapturar' onClick={() => capturarModal()}>Capturar</Button>}
+                {props.isPokedex && <Button className='botaoExcluir' onClick={() => excluirModal()}>Excluir</Button> }
             </div>
 
             <div className='ladoEsquerdo'>
-                <p>#01</p>
+                <p>#{pokemon.id}</p>
                 <h2>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
                 <div className='tipos'>                    
                     {poder2.length > 1 && <img className='tipo2' src={getTypes(poder2)} />}
-                    {poder.length > 1 && <img className='tipo1' src={getTypes(poder)} />}
-                    
+                    {poder.length > 1 && <img className='tipo1' src={getTypes(poder)} />}                    
                 </div>
-                < Button onClick={() => gotoDetalhesPage(navigate, pokemon.name)} className='detalhes'>Detalhes</Button>
+                <h3>{showLink && <Link to={`/detalhes/${pokeDetalhes.name}`}>Detalhes</Link>}</h3>
+                
             </div>
 
         </PokemonCardConteiner>
