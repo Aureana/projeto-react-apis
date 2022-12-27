@@ -3,7 +3,6 @@ import { ChakraProvider } from "@chakra-ui/react"
 import Router from "./routes/Router"
 import { useState, useEffect } from "react"
 import axios from "axios"
-//import { BASE_URL } from "./constants/url"
 import { GlobalContext } from "./contexts/GlobalContext"
 
 
