@@ -7,7 +7,7 @@ O Projeto React e APIs é um site de pokémons.
 
 ## Deploy (visualize o site)
 
-aureana-api-pokedex.surge.sh
+http://aureana-api-pokedex.surge.sh/
 
 #
 ## Stack utilizada: Front-end: 
