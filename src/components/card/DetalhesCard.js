@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Progress, Stack } from '@chakra-ui/react'
 import { getTypes } from '../../util/ReturnType'
 import { getColors } from "../../util/ReturnCor"
-import { ContainerCard, DetalhesLadoEsquerdo, DetalhesLadoDireito } from "./StyledDetlhesPage"
+import { ContainerCard, DetalhesLadoEsquerdo, DetalhesLadoDireito } from "../estilosPage/StyledDetalhesPage"
 import imagemBola from "../../imagens/pokeBola3.png"
 
 
@@ -60,8 +60,8 @@ export const DetalhesCard = (props) => {
           <p>#{details.id}</p>
           <h2>{details.name.charAt(0).toUpperCase() + details.name.slice(1)}</h2>
           <div className='tiposDireito'>
-            {poder2.length > 1 && <img src={getTypes(poder2)} />}
-            {poder.length > 1 && <img src={getTypes(poder)} />}
+            {poder2 && <img src={getTypes(poder2)} />}
+            {poder && <img src={getTypes(poder)} />}
           </div>
           <div className='divMoves'>
             <div className='move'>

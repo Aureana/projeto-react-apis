@@ -18,7 +18,7 @@ Styled-components
 
 React-modal
 
-Requisições Fetch ( async e await )
+Requisições com Axios 
 #
 
 ## Funcionalidades1- Home

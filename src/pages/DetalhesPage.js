@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Header from "../components/Header"
-import { MainStyled, DivMOdal3 } from "../components/card/StyledDetlhesPage"
+import { MainStyled, DivMOdal3 } from "../components/estilosPage/StyledDetalhesPage"
 import { DetalhesCard } from '../components/card/DetalhesCard'
 import Modal from 'react-modal'
+import axios from 'axios'
 
 import { useContext } from "react";
 import { GlobalContext } from "../contexts/GlobalContext";
@@ -17,28 +18,32 @@ const DetalhesPage = () => {
   const [poder2, setPoder2] = useState([])
   const [base, setBase] = useState([])
 
-  const fetchDetalhes = async (url) => {
-    const APIResponse = await fetch(url)
-    const data = await APIResponse.json()
-    setDetails(data)
-    setPoder2(data['types']['0']['type']['name'])
-    setPoder(data['types']['1']['type']['name'])
+  const fetchDetalhes = async () => {
+    try{
+    const APIResponse = await axios.get(`${urlCadaPoke}${id}`)
+    setDetails(APIResponse.data)
+    }
+    catch(error){
+    }
+   
   }
-  const BaseState = async () => {
-    setBase(details['stats'])
-  }
-  useEffect(() => {
-    BaseState()
-  }, [fetchDetalhes])
 
   useEffect(() => {
-    const pokemonUrl = `${urlCadaPoke}${id}`
-    fetchDetalhes(pokemonUrl)
-  }, [])
-  console.log(details)
-
+    fetchDetalhes()
+  },[])
+  const typeEbase = async () => {
+    if(details){
+      setPoder2(details['types']['0'].type?.['name'])
+      setPoder(details.types[1]?.type?.['name'])
+      setBase(details['stats'])
+      }
+  }
+  useEffect(()=>{
+    typeEbase()
+  },[details])
+ 
   const context = useContext(GlobalContext)
-  const { pokedex, removePokedex, modal, modalCapturarSumir, customStyle } = context
+  const { modal, modalCapturarSumir, customStyle } = context
 
   return (
     <>
@@ -54,7 +59,8 @@ const DetalhesPage = () => {
         <Modal
           onRequestClose={modalCapturarSumir}
           style={customStyle}
-          isOpen={modal}>
+          isOpen={modal}
+          ariaHideApp={false}>           
           <DivMOdal3>
             <h1>Oh, no! </h1>
             <p>O pokemon foi removido da sua pokedex</p>
