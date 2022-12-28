@@ -89,10 +89,7 @@ h3{
     width: 106px;
     height: 38px;
     background-color: #FF6262;
-    color:  #FFFFFF;
-   
-
-    }
-   
+    color:  #FFFFFF; 
+    }   
 }
 `

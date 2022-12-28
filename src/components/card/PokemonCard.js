@@ -1,15 +1,21 @@
-import React, { useEffect, useContext, useState} from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { GlobalContext } from '../../contexts/GlobalContext'
 import imagemBola from "../../imagens/pokeBola.png"
 import { Button } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
+import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { getTypes } from '../../util/ReturnType'
 import {PokemonCardConteiner} from "./StyledPokemonCard"
 import {getColors} from "../../util/ReturnCor"
+import axios from 'axios'
+
 
 
 const PokemonCard = (props, {showLink = true}) => {
     const { pokemon} = props;
+
+    const location = useLocation();//path atual
+
+    const navigate = useNavigate()
 
     const context = useContext(GlobalContext)
     
@@ -22,7 +28,7 @@ const PokemonCard = (props, {showLink = true}) => {
     //segunda requisção para buscar os tipos
     const fetchPokemon2 = async () => {
         setPoder2(pokemon['types']['0']['type']['name'])
-        setPoder(pokemon['types']['1']['type']['name'])         
+        setPoder(pokemon.types[1]?.type?.name)         
     }
     const pokemonNameFetch = async () => {
         setPokeDetalhes(pokemon)
@@ -60,8 +66,8 @@ const PokemonCard = (props, {showLink = true}) => {
                 <p>#{pokemon.id}</p>
                 <h2>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
                 <div className='tipos'>                    
-                    {poder2.length > 1 && <img className='tipo2' src={getTypes(poder2)} />}
-                    {poder.length > 1 && <img className='tipo1' src={getTypes(poder)} />}                    
+                    {poder2 && <img className='tipo2' src={getTypes(poder2)} />}
+                    {poder && <img className='tipo1' src={getTypes(poder)} />}                    
                 </div>
                 <h3>{showLink && <Link to={`/detalhes/${pokeDetalhes.name}`}>Detalhes</Link>}</h3>
                 

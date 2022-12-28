@@ -3,7 +3,9 @@ import { ChakraProvider } from "@chakra-ui/react"
 import Router from "./routes/Router"
 import { useState, useEffect } from "react"
 import axios from "axios"
+//import { BASE_URL } from "./constants/url"
 import { GlobalContext } from "./contexts/GlobalContext"
+import zIndex from "@mui/material/styles/zIndex"
 
 
 const App = () => {
@@ -12,7 +14,9 @@ const App = () => {
     const [pokedex, setPokedex] = useState([]);
     const [typePoke, setTypePoke] = useState([])
     const [modal, setModal] = useState(false)
-        
+    const [modal1, setModal1] = useState(false)
+
+    
 
     const fetchPokelist = () => {
 
