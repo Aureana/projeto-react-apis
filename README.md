@@ -1,8 +1,8 @@
 # # Projeto React e API's Pokedex
 ![Navigate](./src/imagens/telaHome.png)
 
-O Projeto React e APIs é um site de pokémons.
-
+O Projeto React e APIs, é um site de pokémons que possui três páginas: Home, Pokedex e Detalhes. 
+É objetivo deste projeto criar um site usando como fonte de dados a Poke Api
 
 
 ## Deploy (visualize o site)
@@ -11,11 +11,13 @@ http://aureana-api-pokedex.surge.sh/
 
 #
 ## Stack utilizada: Front-end: 
-React-router-dom
+Integração de APIs
 
-Styled-components
+React Router
 
-React-modal
+Design Systems
+
+Estado Global
 
 Requisições com Axios 
 #
